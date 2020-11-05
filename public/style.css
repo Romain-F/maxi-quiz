@@ -20,6 +20,7 @@ body {
 a {
   color: inherit;
   text-decoration: underline;
+<<<<<<< HEAD
 }
 
 p {
@@ -36,7 +37,30 @@ p {
 
 .quote-wrapper a:hover {
   color: #ffffff;
+=======
+>>>>>>> 3b445fccce67e565b3b8ca80f2e28909ae315069
 }
+
+.empty-quote {
+  color: #ffffff;
+}
+
+<<<<<<< HEAD
+form {
+  padding: 20px;
+}
+=======
+.quote-wrapper {
+  margin-top: 20px;
+}
+
+  .quote-wrapper a {
+    text-decoration: none;
+  }
+
+    .quote-wrapper a:hover {
+      color: #ffffff;
+    }
 
 .empty-quote {
   color: #ffffff;
@@ -45,3 +69,4 @@ p {
 form {
   padding: 20px;
 }
+>>>>>>> 3b445fccce67e565b3b8ca80f2e28909ae315069

@@ -24,6 +24,7 @@ Route.post('/login-store', 'AuthController.postLogin').as('login.store')
 Route.get('/view-quiz/:id', 'QuizController.show').as('view.quiz')
 
 Route.group(() => {
+<<<<<<< HEAD
     Route.get('/create-quiz', 'QuizController.create').as('create.quiz')
     Route.post('/store-quiz', 'QuizController.store').as('store.quiz')
     Route.get('/edit-quiz/:id', 'QuizController.edit').as('edit.quiz')
@@ -33,3 +34,12 @@ Route.group(() => {
 }).middleware(['auth'])
 
 //Route.on('/').render('index')
+=======
+  Route.get('/create-quiz', 'QuizController.create').as('create.quiz')
+  Route.post('/store-quiz', 'QuizController.store').as('store.quiz')
+  Route.get('/edit-quiz/:id', 'QuizController.edit').as('edit.quiz')
+  Route.post('/update-quiz/:id', 'QuizController.update').as('update.quiz')
+  Route.get('/delete-quiz/:id', 'QuizController.destroy').as('delete.quiz')
+  Route.post('/logout', 'AuthController.logout').as('logout')
+}).middleware(['auth'])
+>>>>>>> 3b445fccce67e565b3b8ca80f2e28909ae315069

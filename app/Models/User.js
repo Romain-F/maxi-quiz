@@ -35,7 +35,11 @@ class User extends Model {
     return this.hasMany('App/Models/Token')
   }
 
+<<<<<<< HEAD
   quiz(){
+=======
+  quote() {
+>>>>>>> 3b445fccce67e565b3b8ca80f2e28909ae315069
     return this.hasMany('App/Models/Quiz')
   }
 }
