@@ -20,53 +20,28 @@ body {
 a {
   color: inherit;
   text-decoration: underline;
-<<<<<<< HEAD
 }
 
 p {
   margin: 0.83rem 0;
 }
 
-.quote-wrapper {
+.quiz-wrapper {
   margin-top: 20px;
 }
 
-.quote-wrapper a {
+.quiz-wrapper a {
   text-decoration: none;
 }
 
-.quote-wrapper a:hover {
-  color: #ffffff;
-=======
->>>>>>> 3b445fccce67e565b3b8ca80f2e28909ae315069
-}
-
-.empty-quote {
+.quiz-wrapper a:hover {
   color: #ffffff;
 }
 
-<<<<<<< HEAD
-form {
-  padding: 20px;
-}
-=======
-.quote-wrapper {
-  margin-top: 20px;
-}
-
-  .quote-wrapper a {
-    text-decoration: none;
-  }
-
-    .quote-wrapper a:hover {
-      color: #ffffff;
-    }
-
-.empty-quote {
+.empty-quiz {
   color: #ffffff;
 }
 
 form {
   padding: 20px;
 }
->>>>>>> 3b445fccce67e565b3b8ca80f2e28909ae315069

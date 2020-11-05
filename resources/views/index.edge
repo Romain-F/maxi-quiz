@@ -15,44 +15,25 @@
                         <div class="card-body">
                             <blockquote class="blockquote mb-0">
                                 <p>{{quiz.name}}</p>
-<<<<<<< HEAD
                                 <footer class="blockquote-footer">
                                     <cite title="Source Title"> Un quizmate anonyme</cite>
                                 </footer>
                             </blockquote>
                             <!--@if(auth.user.id == quiz.user_id)-->
                               <div>
-                                <a  href="/edit-quiz/{{quiz.id}}" class="btn btn-primary">edit</a>
-                                <a href="/delete-quiz/{{quiz.id}}" class="btn btn-danger">delete</a>
-                              </div>
-                           <!-- @endif -->
-=======
-                            </blockquote>
-                            <!-- @if(auth.user.id == quiz.user_id) -->
-                              <div>
                                 <a  href="/edit-quiz/{{quiz.id}}" class="btn btn-primary">Editer</a>
                                 <a href="/delete-quiz/{{quiz.id}}" class="btn btn-danger">Supprimer</a>
                               </div>
-                            <!-- @endif -->
->>>>>>> 3b445fccce67e565b3b8ca80f2e28909ae315069
+                           <!-- @endif -->
                         </div>
                     </div>
                 </a>
             </div>
         @else
-<<<<<<< HEAD
-         <div class="col-md-12 empty-quiz text-center">
-                <p>No inspirational quiz has been created</p>
-=======
          <div class="col-md-12 empty-quote text-center">
-                <p>Il n'y a pas encore de quiz disponible</p>
->>>>>>> 3b445fccce67e565b3b8ca80f2e28909ae315069
+                <p>Il n'y a pas encore de quiz inspirant disponible</p>
          </div>
         @endeach
     </div>
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 3b445fccce67e565b3b8ca80f2e28909ae315069
