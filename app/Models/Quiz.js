@@ -7,6 +7,10 @@ class Quiz extends Model {
   theme(){
     return this.hasOne('App/Models/Theme')
   }
+
+  question() {
+    return this.belongsToMany('App/Models/Question')
+  }
 }
 
 module.exports = Quiz
