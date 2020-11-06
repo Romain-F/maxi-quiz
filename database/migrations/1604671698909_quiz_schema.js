@@ -4,11 +4,11 @@
 const Schema = use('Schema')
 
 class QuizSchema extends Schema {
-  up () {
+  up() {
     this.create('quizzes', (table) => {
       table.increments()
       table.string('name', 40).notNullable()
-      table.integer('id_theme').notNullable()
+      table.integer('id_theme').notNullable().unsigned().references('id').inTable('themes')
       table.timestamps()
     })
   }

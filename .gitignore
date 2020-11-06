@@ -14,3 +14,5 @@ database/*.sqlite
 # VSCode & Webstorm history directories
 .history
 .idea
+.vs/slnx.sqlite
+.vs/maxi-quiz/v16/.suo
