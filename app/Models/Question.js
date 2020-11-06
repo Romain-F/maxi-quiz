@@ -8,6 +8,9 @@ class Question extends Model {
         return this.belongsToMany('App/Models/Answer')
             .withPivot(['is_correct_answer'])
     }
+    quiz() {
+        return this.belongsToMany('App/Models/Quiz')
+    }
 }
 
 module.exports = Question
