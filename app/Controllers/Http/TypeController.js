@@ -13,7 +13,7 @@ class TypeController {
 
   async store({ request, auth, response }) {
     try {
-      let type = await auth.user.types().create(request.all())
+      let type = await Type.create(request.all())
       await type.load('user');
       return response.json(type)
     } catch (e) {

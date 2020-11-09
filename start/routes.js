@@ -24,6 +24,11 @@ Route.post('/login-store', 'AuthController.postLogin').as('login.store')
 Route.get('/view-quiz/:id', 'QuizController.show').as('view.quiz')
 Route.get('/test/:id', 'QuizController.test').as('test.quiz')
 
+Route.get('/themes', 'ThemeController.get').as('get.type')
+Route.post('store-theme', 'ThemeController.post').as('post.theme')
+Route.put('update-theme/:id', 'ThemeController.put').as('update.theme')
+Route.delete('delete-theme/:id', 'ThemeController.delete').as('delete.theme')
+
 Route.get('/types', 'TypeController.getTypes').as('get.type')
 Route.get('/create-type', 'TypeController.create').as('create.type')
 Route.post('/store-type', 'TypeController.store').as('store.type')
