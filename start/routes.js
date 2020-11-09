@@ -24,6 +24,12 @@ Route.post('/login-store', 'AuthController.postLogin').as('login.store')
 Route.get('/view-quiz/:id', 'QuizController.show').as('view.quiz')
 Route.get('/test/:id', 'QuizController.test').as('test.quiz')
 
+Route.get('/types', 'TypeController.getTypes').as('get.type')
+Route.get('/create-type', 'TypeController.create').as('create.type')
+Route.post('/store-type', 'TypeController.store').as('store.type')
+Route.post('/update-type/:id', 'TypeController.update').as('update.type')
+Route.get('/delete-type/:id', 'TypeController.destroy').as('delete.type')
+
 Route.group(() => {
     Route.get('/create-quiz', 'QuizController.create').as('create.quiz')
     Route.post('/store-quiz', 'QuizController.store').as('store.quiz')
