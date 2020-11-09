@@ -4,7 +4,8 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-const Quiz = use('App/Models/Quiz')
+const Question = use('App/Models/Question');
+const Quiz = use('App/Models/Quiz');
 /**
  * Resourceful controller for interacting with quizzes
  */
@@ -49,7 +50,7 @@ class QuizController {
   async store ({ request, auth, session, response }) {
     const quiz = await Quiz.create({
       name: request.input('name'),
-      id_theme: 0
+      id_theme: 1
     })
     session.flash({ 'successmessage': 'Le quiz a été créé !' })
     return response.redirect('/')
@@ -66,8 +67,10 @@ class QuizController {
    */
   async show ({ params, request, response, view }) {
     const quiz = await Quiz.find(params.id)
+    console.log(quiz)
+    console.log(quiz.name)
     return view.render('quizzes.quiz', {
-      quiz: quiz.toJSON()
+      quiz: quiz
     })
   }
 
@@ -117,6 +120,16 @@ class QuizController {
     session.flash({ 'successmessage': 'Le quiz a été supprimé !' })
     return response.redirect('/')
   }
+
+  async test({ params, request, response, session }) {
+    //test tables d'association
+    const question = await Question.query().with('answers').fetch();
+    //const answers = await question.answers()
+    console.log(question)
+    return question.toJSON();
+  }
+
+  //si route commence par /api(voir dans objet request), return json, sinon return response template pour admin
 }
 
 module.exports = QuizController

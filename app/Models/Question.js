@@ -4,9 +4,10 @@
 const Model = use('Model')
 
 class Question extends Model {
-    answer() {
-        return this.belongsToMany('App/Models/Answer')
+    answers() {
+        return this.belongsToMany('App/Models/Answer', 'id_question', 'id_answer')
             .withPivot(['is_correct_answer'])
+            
     }
     quiz() {
         return this.belongsToMany('App/Models/Quiz')

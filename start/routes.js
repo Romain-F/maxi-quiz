@@ -22,6 +22,7 @@ Route.post('/register-store', 'AuthController.postRegister').as('register.store'
 Route.get('/login', 'AuthController.loginView').as('login.create')
 Route.post('/login-store', 'AuthController.postLogin').as('login.store')
 Route.get('/view-quiz/:id', 'QuizController.show').as('view.quiz')
+Route.get('/test/:id', 'QuizController.test').as('test.quiz')
 
 Route.group(() => {
     Route.get('/create-quiz', 'QuizController.create').as('create.quiz')
