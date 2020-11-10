@@ -10,7 +10,7 @@ class Question extends Model {
             
     }
     quiz() {
-        return this.belongsToMany('App/Models/Quiz')
+        return this.belongsToMany('App/Models/Quiz', 'id_question', 'id_quiz')
     }
 }
 

@@ -5,11 +5,11 @@ const Model = use('Model')
 
 class Quiz extends Model {
   theme(){
-    return this.hasOne('App/Models/Theme')
+    return this.hasMany('App/Models/Theme')
   }
 
-  question() {
-    return this.belongsToMany('App/Models/Question')
+  questions() {
+    return this.belongsToMany('App/Models/Question', 'id_quiz', 'id_question')
   }
 }
 

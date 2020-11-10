@@ -12,26 +12,26 @@ class ThemeController {
  * @param {Response} ctx.response
  * @param {View} ctx.view
  */
-    async get({response}) {
+    async index({response}) {
         const themes = await Theme.all()  
         return response.json(themes)
     }
 
-    async post({request, response}) {
+    async store({request, response}) {
         const theme = await Theme.create({
             th_name: request.post().name
         })
         response.json(theme)
     }
 
-    async put({params, request, response}) {
+    async update({params, request, response}) {
         const theme = await Theme.find(params.id)
         theme.th_name = request.post().name
         await theme.save()
         return response.json(theme)
     }
 
-    async delete({ params, response }) {
+    async destroy({ params, response }) {
         const theme = await Theme.find(params.id)
         await theme.delete()
 

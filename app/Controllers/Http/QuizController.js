@@ -6,6 +6,7 @@
 
 const Question = use('App/Models/Question');
 const Quiz = use('App/Models/Quiz');
+const Theme = use('App/Models/Theme');
 /**
  * Resourceful controller for interacting with quizzes
  */
@@ -125,8 +126,12 @@ class QuizController {
     //test tables d'association
     const question = await Question.query().with('answers').fetch();
     //const answers = await question.answers()
-    console.log(question)
-    return question.toJSON();
+
+    const quiz = await Quiz.first()
+    const theme = await Theme.find(quiz.id_theme);
+    //console.log(question)
+    console.log(quiz.theme())
+    return response.send();
   }
 
   //si route commence par /api(voir dans objet request), return json, sinon return response template pour admin
