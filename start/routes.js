@@ -24,6 +24,8 @@ Route.post('/login-store', 'AuthController.postLogin').as('login.store')
 Route.get('/view-quiz/:id', 'QuizController.show').as('view.quiz')
 Route.get('/test', 'QuizController.test').as('test.quiz')
 
+Route.resource('/quizzes', 'QuizController').apiOnly()
+Route.resource('/questions', 'QuestionController').apiOnly()
 //Route.get('/themes', 'ThemeController.get').as('get.type')
 //Route.post('store-theme', 'ThemeController.post').as('post.theme')
 //Route.put('update-theme/:id', 'ThemeController.put').as('update.theme')
