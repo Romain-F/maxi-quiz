@@ -20,24 +20,9 @@ class QuizController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
-    const quiz = await Quiz.all()
-    return view.render('index', {
-      quizzes: quiz.toJSON()
-    })
-  }
-
-  /**
-   * Render a form to be used for creating a new quiz.
-   * GET quizzes/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
-    return view.render('quizzes.create-quiz')
+  async index ({response}) {
+    const quizzes = await Quiz.all()
+    return response.json(quizzes)
   }
 
   /**
@@ -50,11 +35,10 @@ class QuizController {
    */
   async store ({ request, auth, session, response }) {
     const quiz = await Quiz.create({
-      name: request.input('name'),
-      id_theme: 1
+      name: request.post().name,
+      id_theme: request.post().id_theme
     })
-    session.flash({ 'successmessage': 'Le quiz a été créé !' })
-    return response.redirect('/')
+    return response.json(quiz)
   }
 
   /**
@@ -68,27 +52,7 @@ class QuizController {
    */
   async show ({ params, request, response, view }) {
     const quiz = await Quiz.find(params.id)
-    console.log(quiz)
-    console.log(quiz.name)
-    return view.render('quizzes.quiz', {
-      quiz: quiz
-    })
-  }
-
-  /**
-   * Render a form to update an existing quiz.
-   * GET quizzes/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
-    const quiz = await Quiz.find(params.id)
-    return view.render('quizzes.edit-quiz', {
-      quiz: quiz.toJSON()
-    })
+    return response.json(quiz)
   }
 
   /**
@@ -101,10 +65,11 @@ class QuizController {
    */
   async update ({ params, request, response, session }) {
     const quiz = await Quiz.find(params.id)
-    quiz.name = request.input('name')
+    quiz.name = request.post().name
+    quiz.id_theme = request.post().id_theme
     await quiz.save()
-    session.flash({ 'successmessage': 'Le quiz a été mis à jour !' })
-    return response.redirect('/')
+    
+    return response.json(quiz)
   }
 
   /**
@@ -118,8 +83,8 @@ class QuizController {
   async destroy ({ params, request, response, session }) {
     const quiz = await Quiz.find(params.id)
     await quiz.delete()
-    session.flash({ 'successmessage': 'Le quiz a été supprimé !' })
-    return response.redirect('/')
+    
+    return response.json({ message: 'Le quiz a été supprimé' })
   }
 
   async test({ params, request, response, session }) {
