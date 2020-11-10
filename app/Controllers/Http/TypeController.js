@@ -3,36 +3,39 @@
 const Type = use('App/Models/Type');
 
 class TypeController {
-  async getTypes({ request, response }) {
-    let types = await Type.all()
+  /**
+* Show a list of all quizzes.
+* GET quizzes
+*
+* @param {object} ctx
+* @param {Request} ctx.request
+* @param {Response} ctx.response
+* @param {View} ctx.view
+*/
+  async index({ response }) {
+    const types = await Type.all()
     return response.json(types)
   }
 
-  async create() {
+  async store({ request, response }) {
+    const type = await Type.create({
+      ty_name: request.post().name
+    })
+    response.json(type)
   }
 
-  async store({ request, auth, response }) {
-    try {
-      let type = await Type.create(request.all())
-      await type.load('user');
-      return response.json(type)
-    } catch (e) {
-      console.log(e)
-      return response.json({ message: 'Non autorisé' })
-    }
-  }
-
-  async update({ auth, params, response }) {
-    let type = await Type.find(params.id)
-    type.name = request.input('name')
+  async update({ params, request, response }) {
+    const type = await Type.find(params.id)
+    type.ty_name = request.post().name
     await type.save()
-    await type.load('user');
     return response.json(type)
   }
 
-  async delete({ auth, params, response }) {
-    await Type.find(params.id).delete()
-    return response.json({ message: 'Type supprimé' })
+  async destroy({ params, response }) {
+    const type = await Type.find(params.id)
+    await type.delete()
+
+    return response.json({ message: 'Le type a été supprimé' })
   }
 }
 

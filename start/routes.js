@@ -30,11 +30,13 @@ Route.get('/test', 'QuizController.test').as('test.quiz')
 //Route.delete('delete-theme/:id', 'ThemeController.delete').as('delete.theme')
 Route.resource('/themes', 'ThemeController').apiOnly()
 
-Route.get('/types', 'TypeController.getTypes').as('get.type')
-Route.get('/create-type', 'TypeController.create').as('create.type')
-Route.post('/store-type', 'TypeController.store').as('store.type')
-Route.post('/update-type/:id', 'TypeController.update').as('update.type')
-Route.get('/delete-type/:id', 'TypeController.destroy').as('delete.type')
+//Route.get('/types', 'TypeController.getTypes').as('get.type')
+//Route.post('/store-type', 'TypeController.store').as('store.type')
+//Route.post('/update-type/:id', 'TypeController.update').as('update.type')
+//Route.get('/delete-type/:id', 'TypeController.destroy').as('delete.type')
+Route.resource('/types', 'TypeController').apiOnly()
+
+Route.resource('/answers', 'AnswerController').apiOnly()
 
 Route.group(() => {
     Route.get('/create-quiz', 'QuizController.create').as('create.quiz')

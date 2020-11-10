@@ -19,3 +19,4 @@ database/*.sqlite
 .vs/VSWorkspaceState.json
 .vs/ProjectSettings.json
 .vs/slnx.sqlite-journal
+.vs/slnx.sqlite-journal
