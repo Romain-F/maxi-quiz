@@ -1,12 +1,18 @@
 'use strict'
 
 const Question = use('App/Models/Question');
+const Database = use('Database')
 
 class QuestionController {
 
     async index({ response }) {
-        const questions = await Question.all()
-        return response.json(questions)
+        const questions = await Question.query().with('answers').fetch();
+        const nb_questions = await Database.from('Questions').getCount();
+        const responseObject = {
+            nb_results: nb_questions,
+            data : questions,
+        }
+        return response.json(responseObject)
     }
 
     async show({ params, response }) {
@@ -16,9 +22,9 @@ class QuestionController {
 
     async store({ request, response }) {
         const question = await Question.create({
-            q_name: request.post().name,
-            q_point: request.post().point,
-            q_timer: request.post().timer,
+            name: request.post().name,
+            point: request.post().point,
+            timer: request.post().timer,
             id_theme: request.post().id_theme,
             id_type: request.post().id_type
         })
@@ -27,9 +33,9 @@ class QuestionController {
 
     async update({ params, request, response }) {
         const question = await Question.find(params.id)
-        question.th_name = request.post().name
-        question.q_point = request.post().point
-        question.q_timer = request.post().timer
+        question.name = request.post().name
+        question.point = request.post().point
+        question.timer = request.post().timer
         question.id_theme = request.post().id_theme
         question.id_type = request.post().id_type
         await question.save()

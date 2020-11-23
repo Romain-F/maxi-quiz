@@ -31,7 +31,7 @@ class ThemeController {
 
     async update({params, request, response}) {
         const theme = await Theme.find(params.id)
-        theme.th_name = request.post().name
+        theme.name = request.post().name
         await theme.save()
         return response.json(theme)
     }

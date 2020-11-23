@@ -21,7 +21,7 @@ class QuizController {
    * @param {View} ctx.view
    */
   async index ({response}) {
-    const quizzes = await Quiz.all()
+    const quizzes = await Quiz.query().with('themes').fetch();
     return response.json(quizzes)
   }
 

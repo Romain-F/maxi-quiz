@@ -9,7 +9,6 @@ class QuizSchema extends Schema {
       table.increments()
       table.string('name', 40).notNullable()
       table.integer('id_theme').notNullable().unsigned().references('id').inTable('themes')
-      table.timestamps()
     })
   }
 

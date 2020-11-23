@@ -4,8 +4,8 @@
 const Model = use('Model')
 
 class Quiz extends Model {
-  theme(){
-    return this.hasMany('App/Models/Theme')
+  themes(){
+    return this.hasMany('App/Models/Theme', 'id', 'id')
   }
 
   questions() {

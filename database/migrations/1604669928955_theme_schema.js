@@ -7,7 +7,7 @@ class ThemeSchema extends Schema {
   up () {
     this.create('themes', (table) => {
       table.increments()
-      table.string('Th_name', 40).notNullable()
+      table.string('name', 40).notNullable()
     })
   }
 

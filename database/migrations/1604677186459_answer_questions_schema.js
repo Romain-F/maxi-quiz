@@ -5,7 +5,7 @@ const Schema = use('Schema')
 
 class AnswerQuestionsSchema extends Schema {
   up () {
-    this.create('answer_questions', (table) => {
+    this.create('answer_question', (table) => {
       table.increments()
       table.integer('id_answer').unsigned().references('id').inTable('answers').onDelete('cascade')
       table.integer('id_question').unsigned().references('id').inTable('questions').onDelete('cascade')

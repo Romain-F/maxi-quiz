@@ -19,14 +19,14 @@ class TypeController {
 
   async store({ request, response }) {
     const type = await Type.create({
-      ty_name: request.post().name
+      name: request.post().name
     })
     response.json(type)
   }
 
   async update({ params, request, response }) {
     const type = await Type.find(params.id)
-    type.ty_name = request.post().name
+    type.name = request.post().name
     await type.save()
     return response.json(type)
   }

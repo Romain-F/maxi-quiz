@@ -15,14 +15,14 @@ class AnswerController {
 
   async store({ request, response }) {
     const answer = await Answer.create({
-      A_name: request.post().name
+      name: request.post().name
     })
     response.json(answer)
   }
 
   async update({ params, request, response }) {
     const answer = await Answer.find(params.id)
-    answer.A_name = request.post().name
+    answer.name = request.post().name
     await answer.save()
     return response.json(answer)
   }
