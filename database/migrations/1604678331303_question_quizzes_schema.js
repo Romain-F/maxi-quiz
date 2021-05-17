@@ -13,7 +13,7 @@ class QuestionQuizzesSchema extends Schema {
   }
 
   down () {
-    this.drop('question_quizzes')
+    this.drop('question_quiz')
   }
 }
 

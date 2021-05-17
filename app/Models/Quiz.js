@@ -11,6 +11,10 @@ class Quiz extends Model {
   questions() {
     return this.belongsToMany('App/Models/Question', 'id_quiz', 'id_question')
   }
+
+  users() {
+    return this.belongsToMany('App/Models/User', 'id_quiz', 'id_user')
+  }
 }
 
 module.exports = Quiz

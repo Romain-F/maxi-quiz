@@ -38,6 +38,10 @@ class User extends Model {
   quiz(){
     return this.hasMany('App/Models/Quiz')
   }
+
+  quiz() {
+    return this.belongsToMany('App/Models/Quiz', 'id_user', 'id_quiz')
+  }
 }
 
 module.exports = User
