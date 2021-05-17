@@ -7,6 +7,7 @@
 const Question = use('App/Models/Question');
 const Quiz = use('App/Models/Quiz');
 const Theme = use('App/Models/Theme');
+const Database = use('Database');
 /**
  * Resourceful controller for interacting with quizzes
  */
@@ -21,7 +22,14 @@ class QuizController {
    * @param {View} ctx.view
    */
   async index ({response}) {
-    const quizzes = await Quiz.query().with('themes').fetch();
+    //const quizzes = await Quiz.query().with('themes').fetch();
+    const quizzes = await Database
+                          .select('quizzes.id')
+                          .select('quizzes.name as quiz_name')
+                          .select('themes.name as theme_name')
+                          .from('quizzes')
+                          .innerJoin('themes', 'themes.id', 'quizzes.id_theme')
+                          .orderBy('id', 'desc')
     return response.json(quizzes)
   }
 
@@ -51,7 +59,14 @@ class QuizController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    const quiz = await Quiz.find(params.id)
+    //const quiz = await Quiz.find(params.id)
+    const quiz = await Database
+      .select('quizzes.id')
+      .select('quizzes.name as quiz_name')
+      .select('themes.name as theme_name')
+      .from('quizzes')
+      .innerJoin('themes', 'themes.id', 'quizzes.id_theme')
+      .where('quizzes.id', params.id)
     return response.json(quiz)
   }
 

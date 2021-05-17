@@ -8,6 +8,8 @@ class AnswerSchema extends Schema {
     this.create('answers', (table) => {
       table.increments()
       table.string('name', 80).notNullable()
+      table.boolean('is_correct_answer')
+      table.integer('id_question').notNullable().unsigned().references('id').inTable('questions')
     })
   }
 

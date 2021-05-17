@@ -24,7 +24,7 @@ class ThemeController {
     
     async store({request, response}) {
         const theme = await Theme.create({
-            th_name: request.post().name
+            name: request.post().name
         })
         response.json(theme)
     }
